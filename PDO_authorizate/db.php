@@ -25,9 +25,7 @@ $result = $pdo->query('SELECT * FROM muvies2');
 // 	echo "Film "  .  $row['title'] .  " Duration "  . $row['duration']  .  " Minits  <br />";
 // }
 
-
 // ======== Метод fetchALL Який повертаэ всі строки таблиці в виді багатомірного масиву  ==============
-
 // $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 // echo "<pre>";
 // var_dump($rows);
@@ -36,13 +34,9 @@ $result = $pdo->query('SELECT * FROM muvies2');
 ###### Іменовані плейсхолдери ##############
 
 $sql = 'SELECT title FROM muvies2 WHERE duration = :duration';
-
 $stmt = $pdo->prepare($sql);
-
 $params = [':duration' => '210'];
-
 $stmt->execute($params);
-
 $rows =$stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // echo "<pre>";
@@ -51,14 +45,9 @@ $rows =$stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ###### Позиційні плейсхолдери ##############
 
-
 $sql_pos = 'SELECT title FROM muvies2 WHERE duration = ?';
-
 $stmt_pos = $pdo->prepare($sql_pos);
-
-
 $stmt_pos->execute(['210']);
-
 $rows_pos =$stmt_pos->fetchAll(PDO::FETCH_ASSOC);
 
 // echo "<pre>";

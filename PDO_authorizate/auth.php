@@ -21,6 +21,8 @@ $stmt->execute($params);
 $user = $stmt->fetch(PDO::FETCH_OBJ);
 
 if ($user) {
+
+	
 	if (password_verify($password, $user->password)) {
 		header('Location: admin.php');
 	}else{
