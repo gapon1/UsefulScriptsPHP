@@ -11,6 +11,7 @@ $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
 
 try{
+
 $pdo = new PDO("$driver:host=$host;dbname=$db_name;charset=$charset", $db_user, $db_pass, $options);
 
 }catch(PDOException $e){
@@ -19,8 +20,19 @@ $pdo = new PDO("$driver:host=$host;dbname=$db_name;charset=$charset", $db_user, 
 
 $result = $pdo->query('SELECT * FROM muvies2');
 
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-	echo "Film "  .  $row['title'] .  " Duration "  . $row['duration']  .  " Minits  <br />";
-}
+// ======= Виводимо обрані нами значення з таблиці =======
+// while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+// 	echo "Film "  .  $row['title'] .  " Duration "  . $row['duration']  .  " Minits  <br />";
+// }
+
+
+// ======== Метод fetchALL Який повертаэ всі строки таблиці в виді багатомірного масиву
+
+$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+echo "<pre>";
+var_dump($rows);
+
+
+
 
 
