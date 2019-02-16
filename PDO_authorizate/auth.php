@@ -2,7 +2,7 @@
 <?php
 
 require_once "db.php";
-
+//Add second branch
 
 $login = trim($_POST['login']);
 $password = trim($_POST['password']);
@@ -22,7 +22,7 @@ $user = $stmt->fetch(PDO::FETCH_OBJ);
 
 if ($user) {
 
-	
+
 	if (password_verify($password, $user->password)) {
 		header('Location: admin.php');
 	}else{
