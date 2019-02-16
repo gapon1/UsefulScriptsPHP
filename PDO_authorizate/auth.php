@@ -23,8 +23,11 @@ $user = $stmt->fetch(PDO::FETCH_OBJ);
 if ($user) {
 
 
-	if (password_verify($password, $user->password)) {
+	if ( password_verify($password, $user->password) ) {
+
+		$_SESSION['user_login'] = $user->login;
 		header('Location: admin.php');
+		
 	}else{
 		echo "Error LOgin or Password 1";
 	}
