@@ -45,14 +45,24 @@ $stmt->execute($params);
 
 $rows =$stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<pre>";
-var_dump($rows);
+// echo "<pre>";
+// var_dump($rows);
 
 
 ###### Позиційні плейсхолдери ##############
 
 
+$sql_pos = 'SELECT title FROM muvies2 WHERE duration = ?';
 
+$stmt_pos = $pdo->prepare($sql_pos);
+
+
+$stmt_pos->execute(['210']);
+
+$rows_pos =$stmt_pos->fetchAll(PDO::FETCH_ASSOC);
+
+// echo "<pre>";
+// var_dump($rows_pos);
 
 
 
